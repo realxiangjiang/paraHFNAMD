@@ -1,0 +1,21 @@
+[+] add    [-] delete    [^] update    [#] modify    { } IMPORTANT
+
+========== 0.0.2 ==========
+[^] change the io of interpolation of spline coefficients
+update file(s): dynamics.h math.h tdcft.h
+                dynamics.cpp hopping.cpp io.cpp math.cpp tdcft.cpp
+
+========== 0.0.3 ==========
+[+] add dish dcsh bse support
+update file(s): const.h dsh.h dynamics.h math.h tdcft.h 
+                bse.cpp dynamics.cpp hopping.cpp io.cpp main.cpp math.cpp optical.cpp tdcft.cpp
+
+========== 0.0.4 ==========
+{^} bring in node_comm, optimize some memery storate strategy
+{#} improve some parallel strategy to accelerate BSE and SOC calculation
+update file(s): bse.h const.h fn.h math.h paw.h soc.h wave_base.h wpot.h
+                bse.cpp fn.cpp main.cpp math.cpp nac.cpp optical.cpp
+                paw.cpp soc.cpp wave_base.cpp wave.cpp wpot.cpp
+
+========== 0.1 ==========
+Same as 0.0.4 but the first public (beta) version

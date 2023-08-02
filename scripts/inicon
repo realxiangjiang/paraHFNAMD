@@ -1,0 +1,9 @@
+#write data before these comments
+#
+#electron or hole:
+#time spin(0 or 1) kpoint(1, 2, 3, ...) band([bandmin, bandmax])
+#example: 5  0  1  14
+#
+#exciton:
+#time spin(0 or 1) kpoint(1, 2, 3, ...) cb([condmin, condmax]) vb([valemin, valemax])
+#example: 5  0  1  20  17

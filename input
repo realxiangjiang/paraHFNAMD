@@ -1,0 +1,64 @@
+// basic
+taskmod = fssh      // task mode choose, now supported: fssh, dish, dcsh, bse, spinor
+carrier = electron  // supported: electron(default) hole exciton
+dftcode = vasp      // only supported is vasp currently
+vaspver = 4         // VASP version 2-5.2.x, 4-5.4.x, 6-6.x
+vaspbin = std       // supported: gam std ncl
+//pawpsae = ae        // for paw choose, ps("pseudo") or ae("all-electron")
+//sexpikr = 0         // 0-calc Ekrij in momory, 1-store Ekrij in disk
+ispinor = 0         // 0-Bloch  1-spinor
+memrank = 1         // 1-high(default), 2-medium, >=3-low
+//probind = 1       // # of processes(usually nodes) binded. Default covers one node, if memrank >= 3, probind = ALL processes(nodes)
+runhome = run       // all scf directories are listed in runhome
+ndigits = 4         // # of digits for scf directories, e.g. 00136 if ndigits = 5
+totstru = 10        // if totstru = 0, code will combine previous calculations
+//strubeg =  1      // if set the two tags
+//struend = 10      // totstru forced equals to struend - strubeg + 1
+
+// basis sets space
+numspns = 1         // numspns = 1 or 2
+allspns = 0         // 0 or 1 if numspns = 1; 0 0, 0 1, 1 1 if numspns = 2
+numkpts = 4         // 0 for ALL
+kpoints = 3 5 6 9   
+
+bandtop = 20 20
+bandmax = 18 18
+bandmin = 11 11
+bandbot =  8  8
+
+condmax = 22 22
+condmin = 19 19
+valemax = 17 17
+valemin = 14 14
+
+exclude =  0        // format: num b_11 b_12 ... b_1num b_21 b_22 ... b_2num. total 1 + numspns * num
+
+// dynamics
+//hopmech = nac       // the hopping mechanism, now supported: nac, nacsoc, nacbse
+//intalgo = Magnus    // integral algorithm, default: Magnus, test: Euler
+dyntemp = 100.0     // the temperature of dynamics
+iontime = 1.0       // ionic step time, POTIM in vasp
+neleint = 10        // number of electronic intergral, interval time = iontime / neleint
+nsample = 1         // number of samples for dynamics
+ntrajec = 100       // number of trajectories for one sample
+namdtim = 20        // namd time, should at least 2
+nvinidc = 1         // non-vanishing initial dynamic coefficients
+
+// exciton
+epsilon = -1.0      // if < 0, use gw calculation, else screen Coulomb potential = 1/epsilon * 1/r
+wpotdir = /path/to/gw
+iswfull = 0         // VASP: wxxxx.tmp or wfullxxxx.tmp
+//encutgw = xxx      // set encutgw ONLY if there is ENCUTGW tag in vasp INCAR file
+nkptsgw = 1 1 1
+nkptssc = 1 1 1
+gapdiff = -1.0      // > 0: manually set; < 0: automatically by wpotdir/OUTCAR
+//dynchan = 1.0 1.0 1.0 1.0 // dynamics channel scales, size of 4, for K^d, K^x, eph, radiation
+lrecomb = 0         // recombination option: 0-not recombine, 1-nonradiative, 2-radiative, 3-both
+//bsedone = 0       // = 1 if bse was calculated before and
+                    // make sure tmpDirect/ and tmpExchange/ exist in calculation directory
+
+// addtional info
+// "spinor2" > 0 means some spinor plane-wave will be rebuilt
+//spinor2 = N          // the following line specify N rebuilt kpoints
+//kpt1 kpt2 kpt3 kpt4  // example for spinor2 = 4, kpt_i = 1, 2, 3, ...
+                     // usually kpt1 = 1 with N = 1 for Gamma is enough
